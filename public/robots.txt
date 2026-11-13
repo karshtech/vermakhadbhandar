@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vermakhadbhandar.com/sitemap.xml
+Sitemap: https://vermakhadbhandar.onrender.com/sitemap.xml

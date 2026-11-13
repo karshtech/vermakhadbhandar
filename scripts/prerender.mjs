@@ -13,7 +13,7 @@ if (!fs.existsSync(templatePath)) {
 
 const template = fs.readFileSync(templatePath, 'utf-8');
 
-const SITE_URL = 'https://vermakhadbhandar.com';
+const SITE_URL = 'https://vermakhadbhandar.onrender.com';
 
 export const PRERENDER_ROUTES = [
   {

@@ -3,6 +3,8 @@ import path from 'path';
 
 console.log('--- VERMA KHAD BHANDAR PRODUCTION SEO & PRERENDERING VERIFICATION ---');
 
+const SITE_URL = 'https://vermakhadbhandar.onrender.com';
+
 let hasErrors = false;
 
 // 1. Verify 8 Canonical Public Routes vs 1 Catch-All Error Route
@@ -25,6 +27,26 @@ if (fs.existsSync(sitemapPath)) {
   const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
   const locMatches = [...sitemapContent.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 
+  // Valid XML checks
+  const isXml = sitemapContent.includes('<?xml version="1.0" encoding="UTF-8"?>');
+  const hasNamespace = sitemapContent.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+  const noDotCom = !sitemapContent.includes('vermakhadbhandar.com');
+  const noLocalhost = !sitemapContent.includes('localhost');
+
+  if (isXml && hasNamespace) {
+    console.log('✅ Sitemap has valid XML header and standard namespace.');
+  } else {
+    console.error('❌ Sitemap missing valid XML header or standard namespace.');
+    hasErrors = true;
+  }
+
+  if (noDotCom && noLocalhost) {
+    console.log('✅ Sitemap is free of vermakhadbhandar.com, localhost, and preview domains.');
+  } else {
+    console.error('❌ Sitemap improperly contains unowned vermakhadbhandar.com or localhost URLs!');
+    hasErrors = true;
+  }
+
   if (locMatches.length === CANONICAL_ROUTES.length) {
     console.log(`✅ Sitemap contains exactly ${locMatches.length} canonical URLs (no 404/test duplicates).`);
   } else {
@@ -33,7 +55,7 @@ if (fs.existsSync(sitemapPath)) {
   }
 
   CANONICAL_ROUTES.forEach((r) => {
-    const expectedUrl = `https://vermakhadbhandar.com${r.path === '/' ? '/' : r.path}`;
+    const expectedUrl = `${SITE_URL}${r.path === '/' ? '/' : r.path}`;
     if (sitemapContent.includes(expectedUrl)) {
       console.log(`  ✓ Sitemap URL verified: ${expectedUrl}`);
     } else {
@@ -55,10 +77,11 @@ if (fs.existsSync(sitemapPath)) {
 const robotsPath = path.resolve('public/robots.txt');
 if (fs.existsSync(robotsPath)) {
   const robotsContent = fs.readFileSync(robotsPath, 'utf-8');
-  if (robotsContent.includes('Allow: /') && robotsContent.includes('https://vermakhadbhandar.com/sitemap.xml')) {
-    console.log('✅ public/robots.txt verified with correct sitemap reference.');
+  const expectedSitemapDirective = `Sitemap: ${SITE_URL}/sitemap.xml`;
+  if (robotsContent.includes('Allow: /') && robotsContent.includes(expectedSitemapDirective) && !robotsContent.includes('vermakhadbhandar.com')) {
+    console.log('✅ public/robots.txt verified with correct onrender sitemap reference.');
   } else {
-    console.error('❌ public/robots.txt invalid or missing sitemap directive.');
+    console.error(`❌ public/robots.txt invalid, contains vermakhadbhandar.com, or missing "${expectedSitemapDirective}".`);
     hasErrors = true;
   }
 } else {
@@ -69,16 +92,19 @@ if (fs.existsSync(robotsPath)) {
 const llmsPath = path.resolve('public/llms.txt');
 if (fs.existsSync(llmsPath)) {
   const llmsContent = fs.readFileSync(llmsPath, 'utf-8');
+  const noDotCom = !llmsContent.includes('vermakhadbhandar.com');
   if (
     llmsContent.includes('Verma Khad Bhandar') &&
     llmsContent.includes('25.839208') &&
     llmsContent.includes('83.776694') &&
     llmsContent.includes('Rasra') &&
-    llmsContent.includes('Kurem')
+    llmsContent.includes('Kurem') &&
+    noDotCom &&
+    llmsContent.includes(`${SITE_URL}`)
   ) {
-    console.log('✅ public/llms.txt verified with accurate business, geo & crop data.');
+    console.log('✅ public/llms.txt verified with accurate onrender URLs, business, geo & crop data.');
   } else {
-    console.error('❌ public/llms.txt missing key verified information.');
+    console.error('❌ public/llms.txt missing key verified information or still contains .com.');
     hasErrors = true;
   }
 } else {
@@ -90,17 +116,50 @@ if (fs.existsSync(llmsPath)) {
 const distDir = path.resolve('dist');
 if (fs.existsSync(distDir)) {
   console.log('\n🔍 Verifying Prerendered HTML Files in dist/:');
+
+  // Verify dist/sitemap.xml and dist/robots.txt exist
+  const distSitemapPath = path.join(distDir, 'sitemap.xml');
+  if (fs.existsSync(distSitemapPath)) {
+    const distSitemap = fs.readFileSync(distSitemapPath, 'utf-8');
+    if (!distSitemap.includes('vermakhadbhandar.com') && distSitemap.includes(`${SITE_URL}/`)) {
+      console.log('  ✅ dist/sitemap.xml verified with onrender URLs and no vermakhadbhandar.com domain.');
+    } else {
+      console.error('  ❌ dist/sitemap.xml contains vermakhadbhandar.com domain or lacks onrender URLs!');
+      hasErrors = true;
+    }
+  } else {
+    console.error('  ❌ dist/sitemap.xml not found!');
+    hasErrors = true;
+  }
+
+  const distRobotsPath = path.join(distDir, 'robots.txt');
+  if (fs.existsSync(distRobotsPath)) {
+    const distRobots = fs.readFileSync(distRobotsPath, 'utf-8');
+    if (!distRobots.includes('vermakhadbhandar.com') && distRobots.includes(`${SITE_URL}/sitemap.xml`)) {
+      console.log('  ✅ dist/robots.txt verified with onrender sitemap directive.');
+    } else {
+      console.error('  ❌ dist/robots.txt contains vermakhadbhandar.com domain or wrong sitemap directive!');
+      hasErrors = true;
+    }
+  } else {
+    console.error('  ❌ dist/robots.txt not found!');
+    hasErrors = true;
+  }
+
   CANONICAL_ROUTES.forEach((r) => {
     const filePath = path.join(distDir, r.file);
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
+      const expectedCanonical = `${SITE_URL}${r.path === '/' ? '/' : r.path}`;
       const hasTitle = content.includes('<title>') && content.includes(r.titleSnippet);
       const hasMetaDesc = content.includes('<meta name="description"');
-      const hasCanonical = content.includes('<link rel="canonical"') && content.includes(`https://vermakhadbhandar.com${r.path === '/' ? '/' : r.path}`);
+      const hasCanonical = content.includes('<link rel="canonical"') && content.includes(expectedCanonical);
+      const hasOgUrl = content.includes('property="og:url"') && content.includes(expectedCanonical);
+      const hasTwitterUrl = content.includes('name="twitter:url"') && content.includes(expectedCanonical);
       const hasOg =
         content.includes('og:title') &&
         content.includes('og:description') &&
-        content.includes('og:url') &&
+        hasOgUrl &&
         content.includes('og:image') &&
         content.includes('og:image:secure_url') &&
         content.includes('og:image:type') &&
@@ -113,9 +172,10 @@ if (fs.existsSync(distDir)) {
         content.includes('twitter:card') &&
         content.includes('twitter:title') &&
         content.includes('twitter:description') &&
+        hasTwitterUrl &&
         content.includes('twitter:image') &&
         content.includes('twitter:image:alt');
-      const hasSocialJpg = content.includes('/images/social/og-');
+      const hasSocialJpg = content.includes(`${SITE_URL}/images/social/og-`);
       const hasLang = content.includes('lang="hi"');
       const hasH1 = content.includes('<h1');
       const hasAddress = content.includes('221712') && content.includes('+91 87262 48752');
@@ -126,20 +186,24 @@ if (fs.existsSync(distDir)) {
       const gscInHead =
         content.indexOf('<meta name="google-site-verification"') !== -1 &&
         content.indexOf('<meta name="google-site-verification"') < content.indexOf('</head>');
+      const noDotCom = !content.includes('vermakhadbhandar.com');
 
-      if (hasTitle && hasMetaDesc && hasCanonical && hasOg && hasTwitter && hasSocialJpg && hasLang && hasH1 && hasAddress && hasJsonLd && hasGsc && gscCount === 1 && gscInHead) {
-        console.log(`  ✅ Prerendered [${r.path}] validated: GSC Verification, Title, Meta, Canonical (${r.path}), OG (full suite), Twitter Card, Social Preview JPG, <h1>, NAP & JSON-LD present.`);
+      if (hasTitle && hasMetaDesc && hasCanonical && hasOg && hasTwitter && hasSocialJpg && hasLang && hasH1 && hasAddress && hasJsonLd && hasGsc && gscCount === 1 && gscInHead && noDotCom) {
+        console.log(`  ✅ Prerendered [${r.path}] validated: onrender domain, Canonical (${r.path}), OG, Twitter, GSC Tag, NAP & JSON-LD present (zero .com).`);
       } else {
-        console.error(`  ❌ Prerendered [${r.path}] missing required tags!`);
+        console.error(`  ❌ Prerendered [${r.path}] missing required tags or contains .com!`);
+        if (!noDotCom) console.error(`    - Still contains forbidden domain vermakhadbhandar.com!`);
         if (!hasGsc) console.error(`    - Missing exact Google Search Console verification meta tag`);
         if (gscCount !== 1) console.error(`    - Invalid Google Search Console verification meta tag count: ${gscCount}`);
         if (!gscInHead) console.error(`    - Google Search Console verification meta tag is not inside <head>`);
         if (!hasTitle) console.error(`    - Missing or incorrect <title>`);
         if (!hasMetaDesc) console.error(`    - Missing <meta name="description">`);
-        if (!hasCanonical) console.error(`    - Missing or incorrect <link rel="canonical">`);
+        if (!hasCanonical) console.error(`    - Missing or incorrect <link rel="canonical"> (expected: ${expectedCanonical})`);
+        if (!hasOgUrl) console.error(`    - Missing or incorrect og:url (expected: ${expectedCanonical})`);
+        if (!hasTwitterUrl) console.error(`    - Missing or incorrect twitter:url (expected: ${expectedCanonical})`);
         if (!hasOg) console.error(`    - Missing full suite of Open Graph tags`);
         if (!hasTwitter) console.error(`    - Missing Twitter card tags`);
-        if (!hasSocialJpg) console.error(`    - Missing dedicated social preview JPEG`);
+        if (!hasSocialJpg) console.error(`    - Missing dedicated social preview JPEG with onrender URL`);
         if (!hasLang) console.error(`    - Missing lang="hi" attribute`);
         if (!hasH1) console.error(`    - Missing <h1> tag`);
         if (!hasAddress) console.error(`    - Missing NAP address or phone in crawlable content`);
@@ -167,11 +231,13 @@ if (fs.existsSync(distDir)) {
     indexHtml.includes('LocalBusiness') &&
     indexHtml.includes('25.839208') &&
     indexHtml.includes('83.776694') &&
-    indexHtml.includes('+918726248752')
+    indexHtml.includes('+918726248752') &&
+    indexHtml.includes(`${SITE_URL}/#store`) &&
+    !indexHtml.includes('vermakhadbhandar.com')
   ) {
-    console.log('✅ Schema.org LocalBusiness structured data verified with verified coordinates & phone.');
+    console.log('✅ Schema.org LocalBusiness structured data verified with onrender URL, coordinates & phone (no .com).');
   } else {
-    console.error('❌ Schema.org LocalBusiness metadata incomplete in index.html');
+    console.error('❌ Schema.org LocalBusiness metadata incomplete in index.html or still contains .com');
     hasErrors = true;
   }
 } else {

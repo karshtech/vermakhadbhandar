@@ -4,7 +4,7 @@
  * and authentic local geographical data for Rasra, Kurem, Dulahpah, and Ballia district.
  */
 
-export const SITE_URL = 'https://vermakhadbhandar.com';
+export const SITE_URL = 'https://vermakhadbhandar.onrender.com';
 
 export interface RouteMetadata {
   path: string;

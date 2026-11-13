@@ -20,7 +20,7 @@
 - **Operating Hours**: Monday to Sunday: 8:00 AM – 7:30 PM (All 7 Days)
 - **Payment Methods Accepted**: Cash, UPI
 - **Google Maps Profile**: https://maps.app.goo.gl/oWXYbJfeAPS23hrL9
-- **Official Website**: https://vermakhadbhandar.com
+- **Official Website**: https://vermakhadbhandar.onrender.com
 
 ## Product Categories
 
@@ -52,14 +52,14 @@
 
 ## Website Pages
 
-- Home: https://vermakhadbhandar.com/
-- About Us: https://vermakhadbhandar.com/about
-- Products: https://vermakhadbhandar.com/products
-- Agriculture Knowledge: https://vermakhadbhandar.com/agriculture
-- Why Choose Us: https://vermakhadbhandar.com/why-choose-us
-- Store Location & Visit: https://vermakhadbhandar.com/visit
-- Contact & WhatsApp: https://vermakhadbhandar.com/contact
-- Local Hub (Rasra & Kurem): https://vermakhadbhandar.com/fertilizer-shop-rasra
+- Home: https://vermakhadbhandar.onrender.com/
+- About Us: https://vermakhadbhandar.onrender.com/about
+- Products: https://vermakhadbhandar.onrender.com/products
+- Agriculture Knowledge: https://vermakhadbhandar.onrender.com/agriculture
+- Why Choose Us: https://vermakhadbhandar.onrender.com/why-choose-us
+- Store Location & Visit: https://vermakhadbhandar.onrender.com/visit
+- Contact & WhatsApp: https://vermakhadbhandar.onrender.com/contact
+- Local Hub (Rasra & Kurem): https://vermakhadbhandar.onrender.com/fertilizer-shop-rasra
 
 ## Agricultural Information
 

@@ -120,11 +120,20 @@ if (fs.existsSync(distDir)) {
       const hasH1 = content.includes('<h1');
       const hasAddress = content.includes('221712') && content.includes('+91 87262 48752');
       const hasJsonLd = content.includes('application/ld+json');
+      const gscTag = '<meta name="google-site-verification" content="LSe4iAC_fCdaQD9GuFBA_Jygg5j-gSCoOpdIkX6HzPo" />';
+      const hasGsc = content.includes(gscTag);
+      const gscCount = (content.match(/name="google-site-verification"/g) || []).length;
+      const gscInHead =
+        content.indexOf('<meta name="google-site-verification"') !== -1 &&
+        content.indexOf('<meta name="google-site-verification"') < content.indexOf('</head>');
 
-      if (hasTitle && hasMetaDesc && hasCanonical && hasOg && hasTwitter && hasSocialJpg && hasLang && hasH1 && hasAddress && hasJsonLd) {
-        console.log(`  ✅ Prerendered [${r.path}] validated: Title, Meta, Canonical (${r.path}), OG (full suite), Twitter Card, Social Preview JPG, <h1>, NAP & JSON-LD present.`);
+      if (hasTitle && hasMetaDesc && hasCanonical && hasOg && hasTwitter && hasSocialJpg && hasLang && hasH1 && hasAddress && hasJsonLd && hasGsc && gscCount === 1 && gscInHead) {
+        console.log(`  ✅ Prerendered [${r.path}] validated: GSC Verification, Title, Meta, Canonical (${r.path}), OG (full suite), Twitter Card, Social Preview JPG, <h1>, NAP & JSON-LD present.`);
       } else {
         console.error(`  ❌ Prerendered [${r.path}] missing required tags!`);
+        if (!hasGsc) console.error(`    - Missing exact Google Search Console verification meta tag`);
+        if (gscCount !== 1) console.error(`    - Invalid Google Search Console verification meta tag count: ${gscCount}`);
+        if (!gscInHead) console.error(`    - Google Search Console verification meta tag is not inside <head>`);
         if (!hasTitle) console.error(`    - Missing or incorrect <title>`);
         if (!hasMetaDesc) console.error(`    - Missing <meta name="description">`);
         if (!hasCanonical) console.error(`    - Missing or incorrect <link rel="canonical">`);

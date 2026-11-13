@@ -47,7 +47,7 @@ export function usePageSEO(customSEO?: SEOProps): void {
       element.setAttribute('content', contentValue);
     };
 
-    // 2. Standard Meta Tags
+    // 2. Standard Meta Tags (Global static tags like google-site-verification in index.html remain intact)
     setMeta('name', 'description', description);
     setMeta('name', 'keywords', keywords);
     setMeta('name', 'author', 'Verma Khad Bhandar');

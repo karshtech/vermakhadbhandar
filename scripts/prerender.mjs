@@ -211,6 +211,14 @@ export const PRERENDER_ROUTES = [
 PRERENDER_ROUTES.forEach((route) => {
   let html = template;
 
+  // Ensure Google Search Console verification meta tag is retained in <head>
+  if (!html.includes('name="google-site-verification"')) {
+    html = html.replace(
+      '</head>',
+      '    <meta name="google-site-verification" content="LSe4iAC_fCdaQD9GuFBA_Jygg5j-gSCoOpdIkX6HzPo" />\n  </head>'
+    );
+  }
+
   // 1. Replace Title
   html = html.replace(/<title>.*?<\/title>/i, `<title>${route.title}</title>`);
 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#103D28" stroke="#83B83D" stroke-width="3" />
+  <circle cx="50" cy="50" r="32" fill="#E8B94F" opacity="0.3" />
+  <!-- Sprout leaves -->
+  <path d="M50 78 C50 52 32 40 22 42 C20 54 30 72 50 78 Z" fill="#83B83D" />
+  <path d="M50 78 C50 48 70 34 80 36 C82 48 72 70 50 78 Z" fill="#B5D957" />
+  <path d="M50 78 L50 32" stroke="#F7F6EF" stroke-width="2.5" stroke-linecap="round" />
+</svg>

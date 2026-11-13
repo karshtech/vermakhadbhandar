@@ -1,0 +1,990 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-11-12T05:44:57.660Z",
+  "sourceVideo": {
+    "filename": "hero.mp4",
+    "durationSeconds": 10.027,
+    "originalWidth": 1280,
+    "originalHeight": 720,
+    "originalFps": 24,
+    "originalSizeBytes": 15249687,
+    "codec": "h264"
+  },
+  "sequence": {
+    "extractionFps": 12,
+    "dimensions": {
+      "width": 1920,
+      "height": 1080,
+      "aspectRatio": "16:9"
+    },
+    "format": "webp",
+    "quality": 92,
+    "totalFrames": 120,
+    "durationSeconds": 10,
+    "totalSizeBytes": 2436560,
+    "averageFrameSizeBytes": 20305,
+    "contactSheet": "/images/hero/sequence/contact_sheet.jpg",
+    "frames": [
+      {
+        "index": 0,
+        "frameNumber": 1,
+        "filename": "frame_0001.webp",
+        "path": "/images/hero/sequence/frame_0001.webp",
+        "timestamp": 0,
+        "sizeBytes": 22782
+      },
+      {
+        "index": 1,
+        "frameNumber": 2,
+        "filename": "frame_0002.webp",
+        "path": "/images/hero/sequence/frame_0002.webp",
+        "timestamp": 0.083,
+        "sizeBytes": 23142
+      },
+      {
+        "index": 2,
+        "frameNumber": 3,
+        "filename": "frame_0003.webp",
+        "path": "/images/hero/sequence/frame_0003.webp",
+        "timestamp": 0.167,
+        "sizeBytes": 23194
+      },
+      {
+        "index": 3,
+        "frameNumber": 4,
+        "filename": "frame_0004.webp",
+        "path": "/images/hero/sequence/frame_0004.webp",
+        "timestamp": 0.25,
+        "sizeBytes": 23202
+      },
+      {
+        "index": 4,
+        "frameNumber": 5,
+        "filename": "frame_0005.webp",
+        "path": "/images/hero/sequence/frame_0005.webp",
+        "timestamp": 0.333,
+        "sizeBytes": 23336
+      },
+      {
+        "index": 5,
+        "frameNumber": 6,
+        "filename": "frame_0006.webp",
+        "path": "/images/hero/sequence/frame_0006.webp",
+        "timestamp": 0.417,
+        "sizeBytes": 23590
+      },
+      {
+        "index": 6,
+        "frameNumber": 7,
+        "filename": "frame_0007.webp",
+        "path": "/images/hero/sequence/frame_0007.webp",
+        "timestamp": 0.5,
+        "sizeBytes": 23356
+      },
+      {
+        "index": 7,
+        "frameNumber": 8,
+        "filename": "frame_0008.webp",
+        "path": "/images/hero/sequence/frame_0008.webp",
+        "timestamp": 0.583,
+        "sizeBytes": 23520
+      },
+      {
+        "index": 8,
+        "frameNumber": 9,
+        "filename": "frame_0009.webp",
+        "path": "/images/hero/sequence/frame_0009.webp",
+        "timestamp": 0.667,
+        "sizeBytes": 23028
+      },
+      {
+        "index": 9,
+        "frameNumber": 10,
+        "filename": "frame_0010.webp",
+        "path": "/images/hero/sequence/frame_0010.webp",
+        "timestamp": 0.75,
+        "sizeBytes": 23246
+      },
+      {
+        "index": 10,
+        "frameNumber": 11,
+        "filename": "frame_0011.webp",
+        "path": "/images/hero/sequence/frame_0011.webp",
+        "timestamp": 0.833,
+        "sizeBytes": 23098
+      },
+      {
+        "index": 11,
+        "frameNumber": 12,
+        "filename": "frame_0012.webp",
+        "path": "/images/hero/sequence/frame_0012.webp",
+        "timestamp": 0.917,
+        "sizeBytes": 22976
+      },
+      {
+        "index": 12,
+        "frameNumber": 13,
+        "filename": "frame_0013.webp",
+        "path": "/images/hero/sequence/frame_0013.webp",
+        "timestamp": 1,
+        "sizeBytes": 20250
+      },
+      {
+        "index": 13,
+        "frameNumber": 14,
+        "filename": "frame_0014.webp",
+        "path": "/images/hero/sequence/frame_0014.webp",
+        "timestamp": 1.083,
+        "sizeBytes": 17702
+      },
+      {
+        "index": 14,
+        "frameNumber": 15,
+        "filename": "frame_0015.webp",
+        "path": "/images/hero/sequence/frame_0015.webp",
+        "timestamp": 1.167,
+        "sizeBytes": 15812
+      },
+      {
+        "index": 15,
+        "frameNumber": 16,
+        "filename": "frame_0016.webp",
+        "path": "/images/hero/sequence/frame_0016.webp",
+        "timestamp": 1.25,
+        "sizeBytes": 18342
+      },
+      {
+        "index": 16,
+        "frameNumber": 17,
+        "filename": "frame_0017.webp",
+        "path": "/images/hero/sequence/frame_0017.webp",
+        "timestamp": 1.333,
+        "sizeBytes": 20460
+      },
+      {
+        "index": 17,
+        "frameNumber": 18,
+        "filename": "frame_0018.webp",
+        "path": "/images/hero/sequence/frame_0018.webp",
+        "timestamp": 1.417,
+        "sizeBytes": 21254
+      },
+      {
+        "index": 18,
+        "frameNumber": 19,
+        "filename": "frame_0019.webp",
+        "path": "/images/hero/sequence/frame_0019.webp",
+        "timestamp": 1.5,
+        "sizeBytes": 21082
+      },
+      {
+        "index": 19,
+        "frameNumber": 20,
+        "filename": "frame_0020.webp",
+        "path": "/images/hero/sequence/frame_0020.webp",
+        "timestamp": 1.583,
+        "sizeBytes": 21520
+      },
+      {
+        "index": 20,
+        "frameNumber": 21,
+        "filename": "frame_0021.webp",
+        "path": "/images/hero/sequence/frame_0021.webp",
+        "timestamp": 1.667,
+        "sizeBytes": 21146
+      },
+      {
+        "index": 21,
+        "frameNumber": 22,
+        "filename": "frame_0022.webp",
+        "path": "/images/hero/sequence/frame_0022.webp",
+        "timestamp": 1.75,
+        "sizeBytes": 21532
+      },
+      {
+        "index": 22,
+        "frameNumber": 23,
+        "filename": "frame_0023.webp",
+        "path": "/images/hero/sequence/frame_0023.webp",
+        "timestamp": 1.833,
+        "sizeBytes": 21134
+      },
+      {
+        "index": 23,
+        "frameNumber": 24,
+        "filename": "frame_0024.webp",
+        "path": "/images/hero/sequence/frame_0024.webp",
+        "timestamp": 1.917,
+        "sizeBytes": 21230
+      },
+      {
+        "index": 24,
+        "frameNumber": 25,
+        "filename": "frame_0025.webp",
+        "path": "/images/hero/sequence/frame_0025.webp",
+        "timestamp": 2,
+        "sizeBytes": 20730
+      },
+      {
+        "index": 25,
+        "frameNumber": 26,
+        "filename": "frame_0026.webp",
+        "path": "/images/hero/sequence/frame_0026.webp",
+        "timestamp": 2.083,
+        "sizeBytes": 21308
+      },
+      {
+        "index": 26,
+        "frameNumber": 27,
+        "filename": "frame_0027.webp",
+        "path": "/images/hero/sequence/frame_0027.webp",
+        "timestamp": 2.167,
+        "sizeBytes": 20762
+      },
+      {
+        "index": 27,
+        "frameNumber": 28,
+        "filename": "frame_0028.webp",
+        "path": "/images/hero/sequence/frame_0028.webp",
+        "timestamp": 2.25,
+        "sizeBytes": 21066
+      },
+      {
+        "index": 28,
+        "frameNumber": 29,
+        "filename": "frame_0029.webp",
+        "path": "/images/hero/sequence/frame_0029.webp",
+        "timestamp": 2.333,
+        "sizeBytes": 20722
+      },
+      {
+        "index": 29,
+        "frameNumber": 30,
+        "filename": "frame_0030.webp",
+        "path": "/images/hero/sequence/frame_0030.webp",
+        "timestamp": 2.417,
+        "sizeBytes": 20826
+      },
+      {
+        "index": 30,
+        "frameNumber": 31,
+        "filename": "frame_0031.webp",
+        "path": "/images/hero/sequence/frame_0031.webp",
+        "timestamp": 2.5,
+        "sizeBytes": 20126
+      },
+      {
+        "index": 31,
+        "frameNumber": 32,
+        "filename": "frame_0032.webp",
+        "path": "/images/hero/sequence/frame_0032.webp",
+        "timestamp": 2.583,
+        "sizeBytes": 20068
+      },
+      {
+        "index": 32,
+        "frameNumber": 33,
+        "filename": "frame_0033.webp",
+        "path": "/images/hero/sequence/frame_0033.webp",
+        "timestamp": 2.667,
+        "sizeBytes": 19304
+      },
+      {
+        "index": 33,
+        "frameNumber": 34,
+        "filename": "frame_0034.webp",
+        "path": "/images/hero/sequence/frame_0034.webp",
+        "timestamp": 2.75,
+        "sizeBytes": 19394
+      },
+      {
+        "index": 34,
+        "frameNumber": 35,
+        "filename": "frame_0035.webp",
+        "path": "/images/hero/sequence/frame_0035.webp",
+        "timestamp": 2.833,
+        "sizeBytes": 18776
+      },
+      {
+        "index": 35,
+        "frameNumber": 36,
+        "filename": "frame_0036.webp",
+        "path": "/images/hero/sequence/frame_0036.webp",
+        "timestamp": 2.917,
+        "sizeBytes": 19010
+      },
+      {
+        "index": 36,
+        "frameNumber": 37,
+        "filename": "frame_0037.webp",
+        "path": "/images/hero/sequence/frame_0037.webp",
+        "timestamp": 3,
+        "sizeBytes": 18310
+      },
+      {
+        "index": 37,
+        "frameNumber": 38,
+        "filename": "frame_0038.webp",
+        "path": "/images/hero/sequence/frame_0038.webp",
+        "timestamp": 3.083,
+        "sizeBytes": 18846
+      },
+      {
+        "index": 38,
+        "frameNumber": 39,
+        "filename": "frame_0039.webp",
+        "path": "/images/hero/sequence/frame_0039.webp",
+        "timestamp": 3.167,
+        "sizeBytes": 18298
+      },
+      {
+        "index": 39,
+        "frameNumber": 40,
+        "filename": "frame_0040.webp",
+        "path": "/images/hero/sequence/frame_0040.webp",
+        "timestamp": 3.25,
+        "sizeBytes": 18524
+      },
+      {
+        "index": 40,
+        "frameNumber": 41,
+        "filename": "frame_0041.webp",
+        "path": "/images/hero/sequence/frame_0041.webp",
+        "timestamp": 3.333,
+        "sizeBytes": 18144
+      },
+      {
+        "index": 41,
+        "frameNumber": 42,
+        "filename": "frame_0042.webp",
+        "path": "/images/hero/sequence/frame_0042.webp",
+        "timestamp": 3.417,
+        "sizeBytes": 18460
+      },
+      {
+        "index": 42,
+        "frameNumber": 43,
+        "filename": "frame_0043.webp",
+        "path": "/images/hero/sequence/frame_0043.webp",
+        "timestamp": 3.5,
+        "sizeBytes": 18118
+      },
+      {
+        "index": 43,
+        "frameNumber": 44,
+        "filename": "frame_0044.webp",
+        "path": "/images/hero/sequence/frame_0044.webp",
+        "timestamp": 3.583,
+        "sizeBytes": 18488
+      },
+      {
+        "index": 44,
+        "frameNumber": 45,
+        "filename": "frame_0045.webp",
+        "path": "/images/hero/sequence/frame_0045.webp",
+        "timestamp": 3.667,
+        "sizeBytes": 17990
+      },
+      {
+        "index": 45,
+        "frameNumber": 46,
+        "filename": "frame_0046.webp",
+        "path": "/images/hero/sequence/frame_0046.webp",
+        "timestamp": 3.75,
+        "sizeBytes": 18336
+      },
+      {
+        "index": 46,
+        "frameNumber": 47,
+        "filename": "frame_0047.webp",
+        "path": "/images/hero/sequence/frame_0047.webp",
+        "timestamp": 3.833,
+        "sizeBytes": 18216
+      },
+      {
+        "index": 47,
+        "frameNumber": 48,
+        "filename": "frame_0048.webp",
+        "path": "/images/hero/sequence/frame_0048.webp",
+        "timestamp": 3.917,
+        "sizeBytes": 18366
+      },
+      {
+        "index": 48,
+        "frameNumber": 49,
+        "filename": "frame_0049.webp",
+        "path": "/images/hero/sequence/frame_0049.webp",
+        "timestamp": 4,
+        "sizeBytes": 18164
+      },
+      {
+        "index": 49,
+        "frameNumber": 50,
+        "filename": "frame_0050.webp",
+        "path": "/images/hero/sequence/frame_0050.webp",
+        "timestamp": 4.083,
+        "sizeBytes": 18814
+      },
+      {
+        "index": 50,
+        "frameNumber": 51,
+        "filename": "frame_0051.webp",
+        "path": "/images/hero/sequence/frame_0051.webp",
+        "timestamp": 4.167,
+        "sizeBytes": 18506
+      },
+      {
+        "index": 51,
+        "frameNumber": 52,
+        "filename": "frame_0052.webp",
+        "path": "/images/hero/sequence/frame_0052.webp",
+        "timestamp": 4.25,
+        "sizeBytes": 18902
+      },
+      {
+        "index": 52,
+        "frameNumber": 53,
+        "filename": "frame_0053.webp",
+        "path": "/images/hero/sequence/frame_0053.webp",
+        "timestamp": 4.333,
+        "sizeBytes": 18368
+      },
+      {
+        "index": 53,
+        "frameNumber": 54,
+        "filename": "frame_0054.webp",
+        "path": "/images/hero/sequence/frame_0054.webp",
+        "timestamp": 4.417,
+        "sizeBytes": 18742
+      },
+      {
+        "index": 54,
+        "frameNumber": 55,
+        "filename": "frame_0055.webp",
+        "path": "/images/hero/sequence/frame_0055.webp",
+        "timestamp": 4.5,
+        "sizeBytes": 17226
+      },
+      {
+        "index": 55,
+        "frameNumber": 56,
+        "filename": "frame_0056.webp",
+        "path": "/images/hero/sequence/frame_0056.webp",
+        "timestamp": 4.583,
+        "sizeBytes": 15704
+      },
+      {
+        "index": 56,
+        "frameNumber": 57,
+        "filename": "frame_0057.webp",
+        "path": "/images/hero/sequence/frame_0057.webp",
+        "timestamp": 4.667,
+        "sizeBytes": 14092
+      },
+      {
+        "index": 57,
+        "frameNumber": 58,
+        "filename": "frame_0058.webp",
+        "path": "/images/hero/sequence/frame_0058.webp",
+        "timestamp": 4.75,
+        "sizeBytes": 14274
+      },
+      {
+        "index": 58,
+        "frameNumber": 59,
+        "filename": "frame_0059.webp",
+        "path": "/images/hero/sequence/frame_0059.webp",
+        "timestamp": 4.833,
+        "sizeBytes": 14420
+      },
+      {
+        "index": 59,
+        "frameNumber": 60,
+        "filename": "frame_0060.webp",
+        "path": "/images/hero/sequence/frame_0060.webp",
+        "timestamp": 4.917,
+        "sizeBytes": 16374
+      },
+      {
+        "index": 60,
+        "frameNumber": 61,
+        "filename": "frame_0061.webp",
+        "path": "/images/hero/sequence/frame_0061.webp",
+        "timestamp": 5,
+        "sizeBytes": 18726
+      },
+      {
+        "index": 61,
+        "frameNumber": 62,
+        "filename": "frame_0062.webp",
+        "path": "/images/hero/sequence/frame_0062.webp",
+        "timestamp": 5.083,
+        "sizeBytes": 19876
+      },
+      {
+        "index": 62,
+        "frameNumber": 63,
+        "filename": "frame_0063.webp",
+        "path": "/images/hero/sequence/frame_0063.webp",
+        "timestamp": 5.167,
+        "sizeBytes": 19766
+      },
+      {
+        "index": 63,
+        "frameNumber": 64,
+        "filename": "frame_0064.webp",
+        "path": "/images/hero/sequence/frame_0064.webp",
+        "timestamp": 5.25,
+        "sizeBytes": 20230
+      },
+      {
+        "index": 64,
+        "frameNumber": 65,
+        "filename": "frame_0065.webp",
+        "path": "/images/hero/sequence/frame_0065.webp",
+        "timestamp": 5.333,
+        "sizeBytes": 19660
+      },
+      {
+        "index": 65,
+        "frameNumber": 66,
+        "filename": "frame_0066.webp",
+        "path": "/images/hero/sequence/frame_0066.webp",
+        "timestamp": 5.417,
+        "sizeBytes": 20176
+      },
+      {
+        "index": 66,
+        "frameNumber": 67,
+        "filename": "frame_0067.webp",
+        "path": "/images/hero/sequence/frame_0067.webp",
+        "timestamp": 5.5,
+        "sizeBytes": 20006
+      },
+      {
+        "index": 67,
+        "frameNumber": 68,
+        "filename": "frame_0068.webp",
+        "path": "/images/hero/sequence/frame_0068.webp",
+        "timestamp": 5.583,
+        "sizeBytes": 20258
+      },
+      {
+        "index": 68,
+        "frameNumber": 69,
+        "filename": "frame_0069.webp",
+        "path": "/images/hero/sequence/frame_0069.webp",
+        "timestamp": 5.667,
+        "sizeBytes": 19970
+      },
+      {
+        "index": 69,
+        "frameNumber": 70,
+        "filename": "frame_0070.webp",
+        "path": "/images/hero/sequence/frame_0070.webp",
+        "timestamp": 5.75,
+        "sizeBytes": 20792
+      },
+      {
+        "index": 70,
+        "frameNumber": 71,
+        "filename": "frame_0071.webp",
+        "path": "/images/hero/sequence/frame_0071.webp",
+        "timestamp": 5.833,
+        "sizeBytes": 20428
+      },
+      {
+        "index": 71,
+        "frameNumber": 72,
+        "filename": "frame_0072.webp",
+        "path": "/images/hero/sequence/frame_0072.webp",
+        "timestamp": 5.917,
+        "sizeBytes": 21030
+      },
+      {
+        "index": 72,
+        "frameNumber": 73,
+        "filename": "frame_0073.webp",
+        "path": "/images/hero/sequence/frame_0073.webp",
+        "timestamp": 6,
+        "sizeBytes": 20108
+      },
+      {
+        "index": 73,
+        "frameNumber": 74,
+        "filename": "frame_0074.webp",
+        "path": "/images/hero/sequence/frame_0074.webp",
+        "timestamp": 6.083,
+        "sizeBytes": 21226
+      },
+      {
+        "index": 74,
+        "frameNumber": 75,
+        "filename": "frame_0075.webp",
+        "path": "/images/hero/sequence/frame_0075.webp",
+        "timestamp": 6.167,
+        "sizeBytes": 20074
+      },
+      {
+        "index": 75,
+        "frameNumber": 76,
+        "filename": "frame_0076.webp",
+        "path": "/images/hero/sequence/frame_0076.webp",
+        "timestamp": 6.25,
+        "sizeBytes": 19282
+      },
+      {
+        "index": 76,
+        "frameNumber": 77,
+        "filename": "frame_0077.webp",
+        "path": "/images/hero/sequence/frame_0077.webp",
+        "timestamp": 6.333,
+        "sizeBytes": 16378
+      },
+      {
+        "index": 77,
+        "frameNumber": 78,
+        "filename": "frame_0078.webp",
+        "path": "/images/hero/sequence/frame_0078.webp",
+        "timestamp": 6.417,
+        "sizeBytes": 15370
+      },
+      {
+        "index": 78,
+        "frameNumber": 79,
+        "filename": "frame_0079.webp",
+        "path": "/images/hero/sequence/frame_0079.webp",
+        "timestamp": 6.5,
+        "sizeBytes": 14812
+      },
+      {
+        "index": 79,
+        "frameNumber": 80,
+        "filename": "frame_0080.webp",
+        "path": "/images/hero/sequence/frame_0080.webp",
+        "timestamp": 6.583,
+        "sizeBytes": 16638
+      },
+      {
+        "index": 80,
+        "frameNumber": 81,
+        "filename": "frame_0081.webp",
+        "path": "/images/hero/sequence/frame_0081.webp",
+        "timestamp": 6.667,
+        "sizeBytes": 18676
+      },
+      {
+        "index": 81,
+        "frameNumber": 82,
+        "filename": "frame_0082.webp",
+        "path": "/images/hero/sequence/frame_0082.webp",
+        "timestamp": 6.75,
+        "sizeBytes": 20342
+      },
+      {
+        "index": 82,
+        "frameNumber": 83,
+        "filename": "frame_0083.webp",
+        "path": "/images/hero/sequence/frame_0083.webp",
+        "timestamp": 6.833,
+        "sizeBytes": 20370
+      },
+      {
+        "index": 83,
+        "frameNumber": 84,
+        "filename": "frame_0084.webp",
+        "path": "/images/hero/sequence/frame_0084.webp",
+        "timestamp": 6.917,
+        "sizeBytes": 20696
+      },
+      {
+        "index": 84,
+        "frameNumber": 85,
+        "filename": "frame_0085.webp",
+        "path": "/images/hero/sequence/frame_0085.webp",
+        "timestamp": 7,
+        "sizeBytes": 20288
+      },
+      {
+        "index": 85,
+        "frameNumber": 86,
+        "filename": "frame_0086.webp",
+        "path": "/images/hero/sequence/frame_0086.webp",
+        "timestamp": 7.083,
+        "sizeBytes": 20990
+      },
+      {
+        "index": 86,
+        "frameNumber": 87,
+        "filename": "frame_0087.webp",
+        "path": "/images/hero/sequence/frame_0087.webp",
+        "timestamp": 7.167,
+        "sizeBytes": 20524
+      },
+      {
+        "index": 87,
+        "frameNumber": 88,
+        "filename": "frame_0088.webp",
+        "path": "/images/hero/sequence/frame_0088.webp",
+        "timestamp": 7.25,
+        "sizeBytes": 21150
+      },
+      {
+        "index": 88,
+        "frameNumber": 89,
+        "filename": "frame_0089.webp",
+        "path": "/images/hero/sequence/frame_0089.webp",
+        "timestamp": 7.333,
+        "sizeBytes": 20946
+      },
+      {
+        "index": 89,
+        "frameNumber": 90,
+        "filename": "frame_0090.webp",
+        "path": "/images/hero/sequence/frame_0090.webp",
+        "timestamp": 7.417,
+        "sizeBytes": 21168
+      },
+      {
+        "index": 90,
+        "frameNumber": 91,
+        "filename": "frame_0091.webp",
+        "path": "/images/hero/sequence/frame_0091.webp",
+        "timestamp": 7.5,
+        "sizeBytes": 21064
+      },
+      {
+        "index": 91,
+        "frameNumber": 92,
+        "filename": "frame_0092.webp",
+        "path": "/images/hero/sequence/frame_0092.webp",
+        "timestamp": 7.583,
+        "sizeBytes": 21780
+      },
+      {
+        "index": 92,
+        "frameNumber": 93,
+        "filename": "frame_0093.webp",
+        "path": "/images/hero/sequence/frame_0093.webp",
+        "timestamp": 7.667,
+        "sizeBytes": 21226
+      },
+      {
+        "index": 93,
+        "frameNumber": 94,
+        "filename": "frame_0094.webp",
+        "path": "/images/hero/sequence/frame_0094.webp",
+        "timestamp": 7.75,
+        "sizeBytes": 21446
+      },
+      {
+        "index": 94,
+        "frameNumber": 95,
+        "filename": "frame_0095.webp",
+        "path": "/images/hero/sequence/frame_0095.webp",
+        "timestamp": 7.833,
+        "sizeBytes": 20862
+      },
+      {
+        "index": 95,
+        "frameNumber": 96,
+        "filename": "frame_0096.webp",
+        "path": "/images/hero/sequence/frame_0096.webp",
+        "timestamp": 7.917,
+        "sizeBytes": 20874
+      },
+      {
+        "index": 96,
+        "frameNumber": 97,
+        "filename": "frame_0097.webp",
+        "path": "/images/hero/sequence/frame_0097.webp",
+        "timestamp": 8,
+        "sizeBytes": 19686
+      },
+      {
+        "index": 97,
+        "frameNumber": 98,
+        "filename": "frame_0098.webp",
+        "path": "/images/hero/sequence/frame_0098.webp",
+        "timestamp": 8.083,
+        "sizeBytes": 18956
+      },
+      {
+        "index": 98,
+        "frameNumber": 99,
+        "filename": "frame_0099.webp",
+        "path": "/images/hero/sequence/frame_0099.webp",
+        "timestamp": 8.167,
+        "sizeBytes": 16644
+      },
+      {
+        "index": 99,
+        "frameNumber": 100,
+        "filename": "frame_0100.webp",
+        "path": "/images/hero/sequence/frame_0100.webp",
+        "timestamp": 8.25,
+        "sizeBytes": 15696
+      },
+      {
+        "index": 100,
+        "frameNumber": 101,
+        "filename": "frame_0101.webp",
+        "path": "/images/hero/sequence/frame_0101.webp",
+        "timestamp": 8.333,
+        "sizeBytes": 14696
+      },
+      {
+        "index": 101,
+        "frameNumber": 102,
+        "filename": "frame_0102.webp",
+        "path": "/images/hero/sequence/frame_0102.webp",
+        "timestamp": 8.417,
+        "sizeBytes": 15848
+      },
+      {
+        "index": 102,
+        "frameNumber": 103,
+        "filename": "frame_0103.webp",
+        "path": "/images/hero/sequence/frame_0103.webp",
+        "timestamp": 8.5,
+        "sizeBytes": 17656
+      },
+      {
+        "index": 103,
+        "frameNumber": 104,
+        "filename": "frame_0104.webp",
+        "path": "/images/hero/sequence/frame_0104.webp",
+        "timestamp": 8.583,
+        "sizeBytes": 21088
+      },
+      {
+        "index": 104,
+        "frameNumber": 105,
+        "filename": "frame_0105.webp",
+        "path": "/images/hero/sequence/frame_0105.webp",
+        "timestamp": 8.667,
+        "sizeBytes": 23084
+      },
+      {
+        "index": 105,
+        "frameNumber": 106,
+        "filename": "frame_0106.webp",
+        "path": "/images/hero/sequence/frame_0106.webp",
+        "timestamp": 8.75,
+        "sizeBytes": 23520
+      },
+      {
+        "index": 106,
+        "frameNumber": 107,
+        "filename": "frame_0107.webp",
+        "path": "/images/hero/sequence/frame_0107.webp",
+        "timestamp": 8.833,
+        "sizeBytes": 24128
+      },
+      {
+        "index": 107,
+        "frameNumber": 108,
+        "filename": "frame_0108.webp",
+        "path": "/images/hero/sequence/frame_0108.webp",
+        "timestamp": 8.917,
+        "sizeBytes": 24416
+      },
+      {
+        "index": 108,
+        "frameNumber": 109,
+        "filename": "frame_0109.webp",
+        "path": "/images/hero/sequence/frame_0109.webp",
+        "timestamp": 9,
+        "sizeBytes": 24220
+      },
+      {
+        "index": 109,
+        "frameNumber": 110,
+        "filename": "frame_0110.webp",
+        "path": "/images/hero/sequence/frame_0110.webp",
+        "timestamp": 9.083,
+        "sizeBytes": 24636
+      },
+      {
+        "index": 110,
+        "frameNumber": 111,
+        "filename": "frame_0111.webp",
+        "path": "/images/hero/sequence/frame_0111.webp",
+        "timestamp": 9.167,
+        "sizeBytes": 24654
+      },
+      {
+        "index": 111,
+        "frameNumber": 112,
+        "filename": "frame_0112.webp",
+        "path": "/images/hero/sequence/frame_0112.webp",
+        "timestamp": 9.25,
+        "sizeBytes": 24898
+      },
+      {
+        "index": 112,
+        "frameNumber": 113,
+        "filename": "frame_0113.webp",
+        "path": "/images/hero/sequence/frame_0113.webp",
+        "timestamp": 9.333,
+        "sizeBytes": 25226
+      },
+      {
+        "index": 113,
+        "frameNumber": 114,
+        "filename": "frame_0114.webp",
+        "path": "/images/hero/sequence/frame_0114.webp",
+        "timestamp": 9.417,
+        "sizeBytes": 25484
+      },
+      {
+        "index": 114,
+        "frameNumber": 115,
+        "filename": "frame_0115.webp",
+        "path": "/images/hero/sequence/frame_0115.webp",
+        "timestamp": 9.5,
+        "sizeBytes": 25286
+      },
+      {
+        "index": 115,
+        "frameNumber": 116,
+        "filename": "frame_0116.webp",
+        "path": "/images/hero/sequence/frame_0116.webp",
+        "timestamp": 9.583,
+        "sizeBytes": 25240
+      },
+      {
+        "index": 116,
+        "frameNumber": 117,
+        "filename": "frame_0117.webp",
+        "path": "/images/hero/sequence/frame_0117.webp",
+        "timestamp": 9.667,
+        "sizeBytes": 25022
+      },
+      {
+        "index": 117,
+        "frameNumber": 118,
+        "filename": "frame_0118.webp",
+        "path": "/images/hero/sequence/frame_0118.webp",
+        "timestamp": 9.75,
+        "sizeBytes": 24806
+      },
+      {
+        "index": 118,
+        "frameNumber": 119,
+        "filename": "frame_0119.webp",
+        "path": "/images/hero/sequence/frame_0119.webp",
+        "timestamp": 9.833,
+        "sizeBytes": 24368
+      },
+      {
+        "index": 119,
+        "frameNumber": 120,
+        "filename": "frame_0120.webp",
+        "path": "/images/hero/sequence/frame_0120.webp",
+        "timestamp": 9.917,
+        "sizeBytes": 24386
+      }
+    ]
+  }
+}

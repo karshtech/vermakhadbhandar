@@ -1,0 +1,97 @@
+@import './design-tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: rgba(16, 61, 40, 0.1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-warm-white);
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Devanagari typography polish */
+  .font-hindi {
+    font-family: var(--font-hindi);
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+  }
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #082B1C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1D603A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #83B83D;
+}
+
+/* Subtle cinematic noise overlay */
+.cinematic-vignette {
+  background: radial-gradient(circle at center, transparent 40%, rgba(8, 43, 28, 0.4) 100%);
+}
+
+.golden-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(232, 185, 79, 0.15) 0%, transparent 70%);
+}
+
+/* Noise overlay utility */
+.bg-grain {
+  background-image: radial-gradient(rgba(16, 61, 40, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom cursor: hide the native pointer only when the spring custom cursor is active */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [role='button'],
+.has-custom-cursor select,
+.has-custom-cursor input {
+  cursor: none !important;
+}
+
+/* Cinematic horizontal agricultural light streak */
+.light-streak {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(253, 184, 19, 0.85), transparent);
+  filter: blur(0.5px);
+  animation: streak 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  opacity: 0;
+}
+
+@keyframes streak {
+  0% { transform: translateX(-40%) scaleX(0.4); opacity: 0; }
+  15% { opacity: 0.85; }
+  45% { transform: translateX(40%) scaleX(1); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light-streak {
+    display: none !important;
+  }
+}

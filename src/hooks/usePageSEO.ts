@@ -72,7 +72,7 @@ export function usePageSEO(customSEO?: SEOProps): void {
     setMeta('property', 'og:image:height', String(routeConfig.ogImageHeight || 630));
     setMeta('property', 'og:image:alt', imageAlt);
     setMeta('property', 'og:type', 'website');
-    setMeta('property', 'og:site_name', isHindi ? 'वर्मा खाद भंडार' : 'Verma Khad Bhandar');
+    setMeta('property', 'og:site_name', 'Verma Khad Bhandar');
     setMeta('property', 'og:locale', isHindi ? 'hi_IN' : 'en_IN');
     setMeta('property', 'og:locale:alternate', isHindi ? 'en_IN' : 'hi_IN');
 

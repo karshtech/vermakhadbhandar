@@ -65,7 +65,7 @@ export const PRERENDER_ROUTES = [
     path: '/products',
     outputPath: 'products/index.html',
     theme: 'light',
-    title: 'Fertilizers, Seeds & Pesticides | Verma Khad Bhandar Rasra',
+    title: 'Fertilizers, Seeds & Agricultural Products | Verma Khad Bhandar',
     description:
       'वर्मा खाद भंडार पर उपलब्ध कृषि उत्पाद: रासायनिक एवं जैविक खाद (यूरिया, DAP, NPK), प्रमाणित उन्नत बीज, कीटनाशक, फफूंदनाशक और पौध पोषक टॉनिक।',
     keywords:
@@ -137,7 +137,7 @@ export const PRERENDER_ROUTES = [
     path: '/visit',
     outputPath: 'visit/index.html',
     theme: 'light',
-    title: 'Visit Verma Khad Bhandar | Shop Location & Directions from Rasra & Kurem',
+    title: 'Visit Our Agricultural Shop | Verma Khad Bhandar Rasra',
     description:
       'वर्मा खाद भंडार का सही पता, दुकान खुलने का समय और रसड़ा व कुरेम से पहुँचने के दिशा-निर्देश। बाधुबांध मार्केट, दुलहपाह, रसड़ा-कासिमाबाद रोड, उत्तर प्रदेश 221712।',
     keywords:
@@ -317,17 +317,101 @@ PRERENDER_ROUTES.forEach((route) => {
     ? 'background-color: rgba(255, 255, 255, 0.1); color: #B5D957; border: 1px solid rgba(131, 184, 61, 0.3);'
     : 'background-color: rgba(16, 61, 40, 0.08); color: #103D28; border: 1px solid rgba(16, 61, 40, 0.15);';
 
+  // Route-specific contextual cross-links for search crawlability and sitelinks
+  let contextualLinksHtml = '';
+  if (route.path === '/') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Explore Verma Khad Bhandar</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/products" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Browse Agricultural Products</a>
+          <a href="/agriculture" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Seasonal Crop Advisory</a>
+          <a href="/about" style="color: #83B83D; font-weight: 700; text-decoration: underline;">About Our Store</a>
+          <a href="/why-choose-us" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Why Farmers Trust Us</a>
+          <a href="/visit" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Store Location & Timings</a>
+          <a href="/contact" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Contact & WhatsApp</a>
+          <a href="/fertilizer-shop-rasra" style="color: #E8B94F; font-weight: 700; text-decoration: underline;">Fertilizer Shop in Rasra</a>
+        </div>
+      </div>`;
+  } else if (route.path === '/products') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Related Agronomic Guidance & Inquiries</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/agriculture" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Seasonal Crop & Fertilizer Schedule</a>
+          <a href="/contact" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Inquire Product Availability & Pricing</a>
+        </div>
+      </div>`;
+  } else if (route.path === '/agriculture') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Recommended Agricultural Inputs</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/products" style="color: #83B83D; font-weight: 700; text-decoration: underline;">View Certified Fertilizers & Seeds Catalog</a>
+        </div>
+      </div>`;
+  } else if (route.path === '/about') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Explore Our Catalog & Store</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/products" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Explore Products & Catalog</a>
+          <a href="/visit" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Visit Our Agricultural Shop</a>
+        </div>
+      </div>`;
+  } else if (route.path === '/why-choose-us') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Connect With Us</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/about" style="color: #83B83D; font-weight: 700; text-decoration: underline;">About Verma Khad Bhandar</a>
+          <a href="/contact" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Contact Store Team</a>
+        </div>
+      </div>`;
+  } else if (route.path === '/visit') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Travel & Inquiries</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/contact" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Contact Us Before Traveling</a>
+          <a href="https://maps.app.goo.gl/oWXYbJfeAPS23hrL9" target="_blank" rel="noopener noreferrer" style="color: #E8B94F; font-weight: 700; text-decoration: underline;">Open Google Maps Directions</a>
+        </div>
+      </div>`;
+  } else if (route.path === '/fertilizer-shop-rasra') {
+    contextualLinksHtml = `
+      <div style="margin: 2rem 0; padding: 1.25rem; border-radius: 0.75rem; ${cardBgStyle}">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #83B83D;">🌾 Rasra & Kurem Local Hub</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <a href="/products" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Product Range</a>
+          <a href="/visit" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Visit Badhubandh Market Store</a>
+          <a href="/contact" style="color: #83B83D; font-weight: 700; text-decoration: underline;">Contact Verma Khad Bhandar</a>
+        </div>
+      </div>`;
+  }
+
   const brandedPrerender = `
     <div id="root">
       <div class="min-h-screen flex flex-col font-sans" style="${bgStyle}">
-        <!-- Static Brand Header Bar -->
-        <header style="padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(131, 184, 61, 0.15); max-width: 1280px; margin: 0 auto; width: 100%;">
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Static Brand Header Bar with Crawlable Global Navigation -->
+        <header style="padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(131, 184, 61, 0.2); max-width: 1280px; margin: 0 auto; width: 100%;">
+          <a href="/" style="display: flex; align-items: center; gap: 0.75rem; color: inherit; text-decoration: none;" aria-label="Verma Khad Bhandar Home">
             <div>
-              <span style="font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em;">VERMA <span style="color: #FDB813;">KHAD BHANDAR</span></span>
+              <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em;">VERMA <span style="color: #FDB813;">KHAD BHANDAR</span></span>
               <span style="display: block; font-size: 0.75rem; color: #83B83D; font-weight: 600;">वर्मा खाद भंडार</span>
             </div>
-          </div>
+          </a>
+
+          <!-- Global Crawlable Navigation Links -->
+          <nav style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;" aria-label="Main Navigation">
+            <a href="/products" style="color: inherit; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Products</a>
+            <a href="/agriculture" style="color: inherit; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Agriculture</a>
+            <a href="/about" style="color: inherit; text-decoration: none; font-size: 0.875rem; font-weight: 600;">About Us</a>
+            <a href="/why-choose-us" style="color: inherit; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Why Choose Us</a>
+            <a href="/visit" style="color: inherit; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Visit Store</a>
+            <a href="/contact" style="color: inherit; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Contact</a>
+            <a href="/fertilizer-shop-rasra" style="color: #E8B94F; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Fertilizer Shop in Rasra</a>
+          </nav>
+
           <div style="font-size: 0.85rem; font-weight: 600;">
             <a href="tel:+918726248752" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 0.4rem;">
               <span>📞 +91 87262 48752</span>
@@ -359,6 +443,8 @@ PRERENDER_ROUTES.forEach((route) => {
             </p>
           </div>
 
+          ${contextualLinksHtml}
+
           <!-- Verified Store Information Card -->
           <div style="border-radius: 1rem; padding: 1.75rem; max-width: 820px; margin-top: 1rem; ${cardBgStyle}">
             <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: #83B83D;">
@@ -382,9 +468,21 @@ PRERENDER_ROUTES.forEach((route) => {
           </div>
         </main>
 
-        <!-- Static Footer -->
-        <footer style="margin-top: auto; padding: 2rem 1.5rem; border-top: 1px solid rgba(131, 184, 61, 0.15); text-align: center; font-size: 0.8rem; opacity: 0.75;">
-          <p>© 2026 VERMA KHAD BHANDAR (वर्मा खाद भंडार). सर्वाधिकार सुरक्षित। • Rasra, Ballia, UP</p>
+        <!-- Static Footer with Crawlable Links -->
+        <footer style="margin-top: auto; padding: 2.5rem 1.5rem; border-top: 1px solid rgba(131, 184, 61, 0.2); font-size: 0.85rem;" aria-label="Site Footer">
+          <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.25rem; text-align: center;">
+            <nav style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem;" aria-label="Footer Navigation">
+              <a href="/" style="color: inherit; text-decoration: underline; font-weight: 600;">Home</a>
+              <a href="/products" style="color: inherit; text-decoration: underline; font-weight: 600;">Products</a>
+              <a href="/agriculture" style="color: inherit; text-decoration: underline; font-weight: 600;">Agriculture</a>
+              <a href="/about" style="color: inherit; text-decoration: underline; font-weight: 600;">About Us</a>
+              <a href="/why-choose-us" style="color: inherit; text-decoration: underline; font-weight: 600;">Why Choose Us</a>
+              <a href="/visit" style="color: inherit; text-decoration: underline; font-weight: 600;">Visit Store</a>
+              <a href="/contact" style="color: inherit; text-decoration: underline; font-weight: 600;">Contact</a>
+              <a href="/fertilizer-shop-rasra" style="color: #E8B94F; text-decoration: underline; font-weight: 600;">Fertilizer Shop in Rasra</a>
+            </nav>
+            <p style="opacity: 0.85; margin: 0;">© 2026 VERMA KHAD BHANDAR (वर्मा खाद भंडार). सर्वाधिकार सुरक्षित। • Rasra, Ballia, UP</p>
+          </div>
         </footer>
       </div>
     </div>

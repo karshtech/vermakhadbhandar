@@ -277,17 +277,40 @@ export const WhyChooseUs: React.FC = () => {
             })}
           </motion.div>
 
-          {/* Action to Contact / Store */}
-          <div className="text-center">
+          {/* Contextual Actions: About Us, Contact & Visit */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Magnetic strength={0.25}>
+              <Link
+                to="/about"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-white bg-[#103D28] hover:bg-[#1D603A] transition-all shadow-md hover:shadow-lg group"
+              >
+                <span className={isHindi ? 'font-hindi text-sm' : 'font-sans text-sm font-bold'}>
+                  {isHindi ? 'हमारे बारे में और जानें' : 'About Verma Khad Bhandar'}
+                </span>
+                <ArrowRight className="w-4 h-4 text-[#B5D957] group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Magnetic>
+
+            <Magnetic strength={0.25}>
+              <Link
+                to="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-[#082B1C] bg-gradient-to-r from-[#B5D957] to-[#83B83D] hover:from-[#E8B94F] hover:to-[#B5D957] transition-all shadow-md hover:shadow-lg group"
+              >
+                <span className={isHindi ? 'font-hindi text-sm font-extrabold' : 'font-sans text-sm font-bold'}>
+                  {isHindi ? 'हमसे संपर्क करें' : 'Contact Verma Khad Bhandar'}
+                </span>
+                <ArrowRight className="w-4 h-4 text-[#082B1C] group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Magnetic>
+
             <Magnetic strength={0.25}>
               <Link
                 to="/visit"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-white bg-[#103D28] hover:bg-[#1D603A] transition-all shadow-md hover:shadow-lg group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-[#103D28] bg-white border border-[#103D28]/20 hover:border-[#83B83D] hover:bg-[#103D28]/5 transition-all shadow-sm hover:shadow-md group"
               >
-                <span className={isHindi ? 'font-hindi text-base' : 'font-sans text-base font-bold'}>
-                  {isHindi ? 'हमारी दुकान पर पधारें' : 'Visit Our Store in Person'}
+                <span className={isHindi ? 'font-hindi text-sm' : 'font-sans text-sm font-semibold'}>
+                  {isHindi ? 'दुकान स्थिति देखें' : 'Visit Store'}
                 </span>
-                <ArrowRight className="w-4 h-4 text-[#B5D957] group-hover:translate-x-1 transition-transform" />
               </Link>
             </Magnetic>
           </div>

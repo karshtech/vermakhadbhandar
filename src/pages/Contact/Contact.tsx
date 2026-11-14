@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle2, AlertCircle, Navigation, ArrowRight } from 'lucide-react';
 import { PageTransition } from '../../components/common/PageTransition';
@@ -288,6 +289,16 @@ export const Contact: React.FC = () => {
                     title="Verma Khad Bhandar Map"
                     className="w-full h-full"
                   />
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                  <Link
+                    to="/visit"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#E8B94F] hover:text-white transition-colors"
+                  >
+                    <span>{isHindi ? 'दुकान की तस्वीरें व पूर्ण विवरण देखें' : 'View Store Photos & Details'}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#E8B94F]" />
+                  </Link>
                 </div>
               </div>
 

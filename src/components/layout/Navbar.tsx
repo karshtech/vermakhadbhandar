@@ -190,41 +190,61 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
-      {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#082B1C]/98 backdrop-blur-2xl border-b border-[#83B83D]/20 px-4 pt-3 pb-6 transition-all duration-300 shadow-2xl">
-          <div className="flex flex-col space-y-1.5">
-            {NAV_ITEMS.map((item) => (
-              <NavLink
-                key={item.id}
-                to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center justify-between px-4 py-3 rounded-2xl border transition-all ${
-                    isActive
-                      ? 'bg-[#1D603A] border-[#83B83D] text-white font-bold'
-                      : 'border-transparent text-[#F7F6EF]/90 hover:bg-white/5'
-                  }`
-                }
-              >
-                <span className={`text-base font-semibold ${language === 'hi' ? 'font-hindi' : 'font-sans'}`}>
-                  {language === 'hi' ? item.labelHi : item.labelEn}
-                </span>
-                <span className="text-white/40">→</span>
-              </NavLink>
-            ))}
+      {/* Mobile Navigation Drawer - Always in DOM for crawlability, toggled via CSS */}
+      <div
+        className={`xl:hidden bg-[#082B1C]/98 backdrop-blur-2xl border-b border-[#83B83D]/20 px-4 pt-3 pb-6 transition-all duration-300 shadow-2xl ${
+          mobileMenuOpen ? 'block' : 'hidden'
+        }`}
+        aria-label="Mobile Navigation"
+      >
+        <div className="flex flex-col space-y-1.5">
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.id}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center justify-between px-4 py-3 rounded-2xl border transition-all ${
+                  isActive
+                    ? 'bg-[#1D603A] border-[#83B83D] text-white font-bold'
+                    : 'border-transparent text-[#F7F6EF]/90 hover:bg-white/5'
+                }`
+              }
+            >
+              <span className={`text-base font-semibold ${language === 'hi' ? 'font-hindi' : 'font-sans'}`}>
+                {language === 'hi' ? item.labelHi : item.labelEn}
+              </span>
+              <span className="text-white/40">→</span>
+            </NavLink>
+          ))}
 
-            <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
-              <NavLink
-                to="/contact"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-[#082B1C] bg-gradient-to-r from-[#B5D957] to-[#83B83D]"
-              >
-                <Phone className="w-4 h-4" />
-                <span className={language === 'hi' ? 'font-hindi' : 'font-sans font-bold'}>{t.nav.callNow}</span>
-              </NavLink>
-            </div>
+          {/* Fertilizer Shop in Rasra Local Page Link */}
+          <NavLink
+            to="/fertilizer-shop-rasra"
+            className={({ isActive }) =>
+              `flex items-center justify-between px-4 py-3 rounded-2xl border transition-all ${
+                isActive
+                  ? 'bg-[#1D603A] border-[#83B83D] text-[#E8B94F] font-bold'
+                  : 'border-white/10 text-[#E8B94F] hover:bg-white/5 font-semibold'
+              }`
+            }
+          >
+            <span className={`text-base font-semibold ${language === 'hi' ? 'font-hindi' : 'font-sans'}`}>
+              {language === 'hi' ? 'रसड़ा-कुरेम कृषि केंद्र' : 'Fertilizer Shop in Rasra'}
+            </span>
+            <span className="text-[#E8B94F]">→</span>
+          </NavLink>
+
+          <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
+            <NavLink
+              to="/contact"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-[#082B1C] bg-gradient-to-r from-[#B5D957] to-[#83B83D]"
+            >
+              <Phone className="w-4 h-4" />
+              <span className={language === 'hi' ? 'font-hindi' : 'font-sans font-bold'}>{t.nav.callNow}</span>
+            </NavLink>
           </div>
         </div>
-      )}
+      </div>
     </motion.header>
   );
 };

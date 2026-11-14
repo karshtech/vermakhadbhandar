@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, Sprout, ShieldCheck, SunMedium, BookOpen, ChevronDown, AlertCircle, ArrowDown, CheckCircle2 } from 'lucide-react';
+import { Layers, Sprout, ShieldCheck, SunMedium, BookOpen, ChevronDown, AlertCircle, ArrowDown, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { PageTransition } from '../../components/common/PageTransition';
 import { SectionHeading } from '../../components/common/SectionHeading';
 import { SeasonalCalendar } from '../../components/SeasonalCalendar';
@@ -416,6 +417,33 @@ export const Agriculture: React.FC = () => {
                 );
               })}
             </div>
+          </div>
+
+          {/* Contextual Link to Agricultural Products */}
+          <div className="mt-20 p-8 rounded-3xl bg-[#082B1C] text-white border border-[#83B83D]/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="max-w-xl text-left">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B5D957] block mb-1">
+                {isHindi ? 'प्रमाणित कृषि आदान' : 'CERTIFIED AGRICULTURAL INPUTS'}
+              </span>
+              <h3 className={`${isHindi ? 'font-hindi text-xl sm:text-2xl font-bold' : 'font-sans text-lg sm:text-xl font-bold'} text-white mb-2`}>
+                {isHindi ? 'सलाह अनुसार आवश्यक खाद व बीज खोज रहे हैं?' : 'Looking for Recommended Fertilizers & Seeds?'}
+              </h3>
+              <p className={`${isHindi ? 'font-hindi text-sm' : 'font-sans text-xs sm:text-sm'} text-[#F7F6EF]/85 leading-relaxed`}>
+                {isHindi
+                  ? 'यूरिया, डीएपी, एनपीके, पोटाश, प्रमाणित बीज और फसल सुरक्षा रसायनों की संपूर्ण सूची एवं विवरण हमारे उत्पाद कैटलॉग में देखें।'
+                  : 'Explore our complete catalog of certified fertilizers, seed varieties, insecticides, and plant nutrition tonics.'}
+              </p>
+            </div>
+
+            <Link
+              to="/products"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-[#082B1C] bg-gradient-to-r from-[#B5D957] to-[#83B83D] hover:from-[#E8B94F] hover:to-[#B5D957] transition-all shadow-md hover:shadow-lg flex-shrink-0"
+            >
+              <span className={isHindi ? 'font-hindi text-sm font-extrabold' : 'font-sans text-sm font-bold'}>
+                {isHindi ? 'कृषि उत्पाद कैटलॉग देखें' : 'View Products Catalog'}
+              </span>
+              <ArrowRight className="w-4 h-4 text-[#082B1C]" />
+            </Link>
           </div>
         </div>
       </section>

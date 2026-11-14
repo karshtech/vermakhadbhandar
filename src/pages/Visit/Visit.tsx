@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Store, MapPin, Clock, Phone, Navigation, ZoomIn, CheckCircle, ShieldCheck } from 'lucide-react';
 import { PageTransition } from '../../components/common/PageTransition';
@@ -182,18 +183,29 @@ export const Visit: React.FC = () => {
                 </div>
               </div>
 
-              {/* Direction Action */}
-              <a
-                href={businessConfig.contact.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-white bg-[#103D28] hover:bg-[#1D603A] transition-all shadow-md hover:shadow-lg group"
-              >
-                <Navigation className="w-4 h-4 text-[#E8B94F] group-hover:rotate-45 transition-transform" />
-                <span className={isHindi ? 'font-hindi text-sm' : 'font-sans text-sm'}>
-                  {isHindi ? 'Google Maps पर दिशा-निर्देश प्राप्त करें' : 'Get Directions on Google Maps'}
-                </span>
-              </a>
+              {/* Direction & Contact Actions */}
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <a
+                  href={businessConfig.contact.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-white bg-[#103D28] hover:bg-[#1D603A] transition-all shadow-md hover:shadow-lg group"
+                >
+                  <Navigation className="w-4 h-4 text-[#E8B94F] group-hover:rotate-45 transition-transform" />
+                  <span className={isHindi ? 'font-hindi text-sm' : 'font-sans text-sm'}>
+                    {isHindi ? 'Google Maps दिशा-निर्देश' : 'Get Directions on Google Maps'}
+                  </span>
+                </a>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-bold text-[#103D28] bg-white border border-[#103D28]/20 hover:border-[#83B83D] hover:bg-[#103D28]/5 transition-all shadow-sm"
+                >
+                  <span className={isHindi ? 'font-hindi text-sm font-bold' : 'font-sans text-sm font-semibold'}>
+                    {isHindi ? 'हमसे संपर्क करें' : 'Contact Store Staff'}
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

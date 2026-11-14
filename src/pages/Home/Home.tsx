@@ -374,11 +374,11 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Full Catalog Action */}
-          <div className="text-center pt-2">
+          {/* Full Catalog & Agriculture Guidance Action Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
               to="/products"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-[#082B1C] bg-gradient-to-r from-[#B5D957] to-[#83B83D] hover:from-[#E8B94F] hover:to-[#B5D957] transition-all shadow-md hover:shadow-xl hover:scale-105 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-[#082B1C] bg-gradient-to-r from-[#B5D957] to-[#83B83D] hover:from-[#E8B94F] hover:to-[#B5D957] transition-all shadow-md hover:shadow-xl hover:scale-105 cursor-pointer"
             >
               <span
                 className={
@@ -388,6 +388,17 @@ export const Home: React.FC = () => {
                 {isHindi ? 'संपूर्ण कृषि उत्पाद सूची देखें' : 'View Complete Agricultural Catalog'}
               </span>
               <ArrowRight className="w-5 h-5 text-[#082B1C]" />
+            </Link>
+
+            <Link
+              to="/agriculture"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl font-bold text-[#103D28] bg-white border border-[#103D28]/20 hover:border-[#83B83D] hover:bg-[#103D28]/5 transition-all shadow-sm hover:shadow-md cursor-pointer"
+            >
+              <Sprout className="w-5 h-5 text-[#83B83D]" />
+              <span className={isHindi ? 'font-hindi text-base font-bold' : 'font-sans text-base font-semibold'}>
+                {isHindi ? 'कृषि जानकारी एवं फसल सलाह' : 'Agriculture Information & Guidance'}
+              </span>
+              <ArrowRight className="w-4 h-4 text-[#83B83D]" />
             </Link>
           </div>
         </div>

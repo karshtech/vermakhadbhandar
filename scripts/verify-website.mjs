@@ -11,10 +11,10 @@ let hasErrors = false;
 const CANONICAL_ROUTES = [
   { path: '/', file: 'index.html', titleSnippet: 'Verma Khad Bhandar' },
   { path: '/about', file: 'about/index.html', titleSnippet: 'About Verma Khad Bhandar' },
-  { path: '/products', file: 'products/index.html', titleSnippet: 'Fertilizers, Seeds & Pesticides' },
+  { path: '/products', file: 'products/index.html', titleSnippet: 'Fertilizers, Seeds & Agricultural Products' },
   { path: '/agriculture', file: 'agriculture/index.html', titleSnippet: 'Agriculture Information' },
   { path: '/why-choose-us', file: 'why-choose-us/index.html', titleSnippet: 'Why Choose Verma Khad Bhandar' },
-  { path: '/visit', file: 'visit/index.html', titleSnippet: 'Visit Verma Khad Bhandar' },
+  { path: '/visit', file: 'visit/index.html', titleSnippet: 'Visit Our Agricultural Shop' },
   { path: '/contact', file: 'contact/index.html', titleSnippet: 'Contact Verma Khad Bhandar' },
   { path: '/fertilizer-shop-rasra', file: 'fertilizer-shop-rasra/index.html', titleSnippet: 'Fertilizer & Seed Shop in Rasra' },
 ];
@@ -188,10 +188,27 @@ if (fs.existsSync(distDir)) {
         content.indexOf('<meta name="google-site-verification"') < content.indexOf('</head>');
       const noDotCom = !content.includes('vermakhadbhandar.com');
 
-      if (hasTitle && hasMetaDesc && hasCanonical && hasOg && hasTwitter && hasSocialJpg && hasLang && hasH1 && hasAddress && hasJsonLd && hasGsc && gscCount === 1 && gscInHead && noDotCom) {
-        console.log(`  ✅ Prerendered [${r.path}] validated: onrender domain, Canonical (${r.path}), OG, Twitter, GSC Tag, NAP & JSON-LD present (zero .com).`);
+      // Verify crawlable HTML anchor links to important pages for Google sitelinks optimization
+      const hasProductsLink = content.includes('href="/products"');
+      const hasAgricultureLink = content.includes('href="/agriculture"');
+      const hasAboutLink = content.includes('href="/about"');
+      const hasWhyChooseUsLink = content.includes('href="/why-choose-us"');
+      const hasVisitLink = content.includes('href="/visit"');
+      const hasContactLink = content.includes('href="/contact"');
+      const hasRasraLink = content.includes('href="/fertilizer-shop-rasra"');
+      const hasAllNavLinks =
+        hasProductsLink &&
+        hasAgricultureLink &&
+        hasAboutLink &&
+        hasWhyChooseUsLink &&
+        hasVisitLink &&
+        hasContactLink &&
+        hasRasraLink;
+
+      if (hasTitle && hasMetaDesc && hasCanonical && hasOg && hasTwitter && hasSocialJpg && hasLang && hasH1 && hasAddress && hasJsonLd && hasGsc && gscCount === 1 && gscInHead && noDotCom && hasAllNavLinks) {
+        console.log(`  ✅ Prerendered [${r.path}] validated: onrender domain, Canonical (${r.path}), OG, Twitter, GSC Tag, NAP, Sitelinks Nav Links & JSON-LD present (zero .com).`);
       } else {
-        console.error(`  ❌ Prerendered [${r.path}] missing required tags or contains .com!`);
+        console.error(`  ❌ Prerendered [${r.path}] missing required tags, nav links, or contains .com!`);
         if (!noDotCom) console.error(`    - Still contains forbidden domain vermakhadbhandar.com!`);
         if (!hasGsc) console.error(`    - Missing exact Google Search Console verification meta tag`);
         if (gscCount !== 1) console.error(`    - Invalid Google Search Console verification meta tag count: ${gscCount}`);
@@ -238,6 +255,28 @@ if (fs.existsSync(distDir)) {
     console.log('✅ Schema.org LocalBusiness structured data verified with onrender URL, coordinates & phone (no .com).');
   } else {
     console.error('❌ Schema.org LocalBusiness metadata incomplete in index.html or still contains .com');
+    hasErrors = true;
+  }
+
+  // Verify WebSite schema & Site Name in index.html
+  const hasWebSiteType = indexHtml.includes('"@type": "WebSite"');
+  const hasWebSiteId = indexHtml.includes(`${SITE_URL}/#website`);
+  const hasWebSiteUrl = indexHtml.includes(`"url": "${SITE_URL}/"`);
+  const hasWebSiteName = indexHtml.includes('"name": "Verma Khad Bhandar"');
+  const hasWebSiteAltHi = indexHtml.includes('"वर्मा खाद भंडार"');
+  const hasWebSitePublisher = indexHtml.includes(`${SITE_URL}/#store`);
+  const hasOgSiteName = indexHtml.includes('property="og:site_name" content="Verma Khad Bhandar"');
+  const noRenderSiteName = !indexHtml.includes('content="Render"') && !indexHtml.includes('"name": "Render"');
+
+  if (hasWebSiteType && hasWebSiteId && hasWebSiteUrl && hasWebSiteName && hasWebSiteAltHi && hasWebSitePublisher && hasOgSiteName && noRenderSiteName) {
+    console.log('✅ WebSite Schema & Google Site Name signals verified ("Verma Khad Bhandar", "वर्मा खाद भंडार", no Render).');
+  } else {
+    console.error('❌ WebSite Schema or Google Site Name signals invalid in index.html!');
+    if (!hasWebSiteName) console.error('  - Missing primary WebSite name: Verma Khad Bhandar');
+    if (!hasWebSiteAltHi) console.error('  - Missing alternate WebSite name: वर्मा खाद भंडार');
+    if (!hasWebSiteUrl) console.error(`  - Missing WebSite url with trailing slash: ${SITE_URL}/`);
+    if (!hasOgSiteName) console.error('  - Missing exact og:site_name: Verma Khad Bhandar');
+    if (!noRenderSiteName) console.error('  - Found invalid "Render" site name in metadata!');
     hasErrors = true;
   }
 } else {
@@ -313,6 +352,40 @@ sequenceAssets.forEach((img) => {
     hasErrors = true;
   }
 });
+
+// 5b. Verify Branded Favicon Assets & Meta Links
+console.log('\n🎨 Verifying Favicon Assets & Branding:');
+const faviconAssets = [
+  'public/favicon.svg',
+  'public/favicon-48x48.png',
+  'public/favicon-96x96.png',
+  'public/favicon-192x192.png',
+  'public/favicon-512x512.png',
+  'public/apple-touch-icon.png',
+  'public/favicon.ico',
+];
+faviconAssets.forEach((fav) => {
+  const favPath = path.resolve(fav);
+  if (fs.existsSync(favPath)) {
+    const stat = fs.statSync(favPath);
+    console.log(`  ✓ Favicon Asset verified: ${fav} (${Math.round(stat.size / 1024)} KB)`);
+  } else {
+    console.error(`  ❌ Favicon Asset missing: ${fav}`);
+    hasErrors = true;
+  }
+});
+
+const rootIndexHtml = fs.readFileSync(path.resolve('index.html'), 'utf-8');
+const hasSvgFav = rootIndexHtml.includes('rel="icon" type="image/svg+xml" href="/favicon.svg"');
+const hasPng48 = rootIndexHtml.includes('rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"');
+const hasPng96 = rootIndexHtml.includes('rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"');
+const hasTouch = rootIndexHtml.includes('rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"');
+if (hasSvgFav && hasPng48 && hasPng96 && hasTouch) {
+  console.log('  ✅ Favicon metadata links verified in index.html (SVG, 48x48 PNG, 96x96 PNG, Apple Touch Icon).');
+} else {
+  console.error('  ❌ Missing one or more required favicon links in index.html!');
+  hasErrors = true;
+}
 
 // 6. Verify Source Page Components (8 Canonical + 1 Catch-All)
 console.log('\n📄 Verifying Page Components in src/pages:');

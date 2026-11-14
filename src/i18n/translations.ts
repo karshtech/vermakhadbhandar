@@ -99,10 +99,10 @@ export const translations: Record<Language, Translations> = {
       home: 'Home',
       about: 'About Us',
       products: 'Products',
-      agriculture: 'Agriculture Guide',
+      agriculture: 'Agriculture',
       whyChooseUs: 'Why Choose Us',
-      visit: 'Visit Our Shop',
-      contact: 'Contact Us',
+      visit: 'Visit Store',
+      contact: 'Contact',
       callNow: 'Contact Us',
     },
     common: {

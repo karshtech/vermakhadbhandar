@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Boxes, Sprout, ShieldCheck, Leaf, MessageCircle, ArrowUpRight, HelpCircle, CheckCircle2 } from 'lucide-react';
+import { Search, Boxes, Sprout, ShieldCheck, Leaf, MessageCircle, ArrowUpRight, ArrowRight, HelpCircle, CheckCircle2 } from 'lucide-react';
 import { PageTransition } from '../../components/common/PageTransition';
 import { FarmCalculator } from '../../components/FarmCalculator';
 import { productCategories } from '../../config/products';
@@ -327,6 +328,39 @@ export const Products: React.FC = () => {
               </p>
             </div>
           )}
+
+          {/* Contextual Agronomic Guidance & Store Inquiries Callout */}
+          <div className="mt-16 mb-16 p-8 rounded-3xl bg-white border border-[#103D28]/12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="max-w-xl text-left">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#83B83D] block mb-1">
+                {isHindi ? 'फसल अनुसार सही उपयोग' : 'BALANCED NUTRIENT ADVICE'}
+              </span>
+              <h3 className={`${isHindi ? 'font-hindi text-xl sm:text-2xl font-bold' : 'font-sans text-lg sm:text-xl font-bold'} text-[#14251A] mb-2`}>
+                {isHindi ? 'फसल अवस्था एवं मौसम अनुसार सलाह चाहिए?' : 'Need Crop-Stage Advice or Bulk Inquiries?'}
+              </h3>
+              <p className={`${isHindi ? 'font-hindi text-sm' : 'font-sans text-xs sm:text-sm'} text-[#657266] leading-relaxed`}>
+                {isHindi
+                  ? 'रबी, खरीफ और जायद की फसलों के लिए सही उर्वरक मात्रा व स्प्रे समय जानने के लिए हमारा कृषि मार्गदर्शन देखें, अथवा उपलब्धता हेतु सीधे संपर्क करें।'
+                  : 'Explore our seasonal crop schedules and balanced NPK guidelines, or get in touch with our team directly for certified batch availability.'}
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-shrink-0">
+              <Link
+                to="/agriculture"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#103D28] hover:bg-[#1D603A] text-white text-xs sm:text-sm font-bold shadow-sm transition-colors"
+              >
+                <span>{isHindi ? 'कृषि मार्गदर्शन देखें' : 'Agriculture Guidance'}</span>
+                <ArrowRight className="w-4 h-4 text-[#B5D957]" />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#F7F6EF] hover:bg-[#103D28]/10 text-[#103D28] text-xs sm:text-sm font-bold border border-[#103D28]/20 transition-colors"
+              >
+                <span>{isHindi ? 'संपर्क करें' : 'Contact Verma Khad Bhandar'}</span>
+              </Link>
+            </div>
+          </div>
 
           {/* Interactive Farm Guidance Calculator Widget */}
           <FarmCalculator />

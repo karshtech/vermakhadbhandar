@@ -67,8 +67,8 @@ export const ROUTE_SEO: Record<string, RouteMetadata> = {
   },
   '/products': {
     path: '/products',
-    titleEn: 'Fertilizers, Seeds & Pesticides | Verma Khad Bhandar Rasra',
-    titleHi: 'खाद, बीज एवं कीटनाशक उत्पाद | वर्मा खाद भंडार रसड़ा',
+    titleEn: 'Fertilizers, Seeds & Agricultural Products | Verma Khad Bhandar',
+    titleHi: 'खाद, बीज एवं कृषि उत्पाद | वर्मा खाद भंडार',
     descEn:
       'Explore agricultural product categories including fertilizers (Urea, DAP, NPK, Potash), certified crop seeds, crop protection pesticides and plant nutrients at Verma Khad Bhandar.',
     descHi:
@@ -127,8 +127,8 @@ export const ROUTE_SEO: Record<string, RouteMetadata> = {
   },
   '/visit': {
     path: '/visit',
-    titleEn: 'Visit Verma Khad Bhandar | Shop Location & Directions from Rasra & Kurem',
-    titleHi: 'दुकान पर आएं | वर्मा खाद भंडार — पता एवं दिशा-निर्देश रसड़ा-कुरेम',
+    titleEn: 'Visit Our Agricultural Shop | Verma Khad Bhandar Rasra',
+    titleHi: 'हमारी दुकान पर आएं | वर्मा खाद भंडार — पता एवं दिशा-निर्देश',
     descEn:
       'Find the physical shop location, opening hours and directions to Verma Khad Bhandar on Rasra-Kasimabad Road, Badhubandh Market, Dulahpah near Rasra and Kurem.',
     descHi:
@@ -477,9 +477,12 @@ export function generateLocalBusinessSchema(): Record<string, unknown> {
       {
         '@type': 'WebSite',
         '@id': `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/`,
         name: 'Verma Khad Bhandar',
-        alternateName: 'वर्मा खाद भंडार',
+        alternateName: [
+          'वर्मा खाद भंडार',
+          'Verma Khad Bhandar',
+        ],
         inLanguage: ['hi', 'en'],
         publisher: {
           '@id': `${SITE_URL}/#store`,

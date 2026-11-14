@@ -258,17 +258,29 @@ export const About: React.FC = () => {
             })}
           </motion.div>
 
-          {/* Explore Products Action */}
-          <div className="mt-16 flex justify-center">
+          {/* Action CTAs: Explore Products & Visit Store */}
+          <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Magnetic strength={0.25}>
               <Link
                 to="/products"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-white bg-[#103D28] hover:bg-[#1D603A] transition-all shadow-md hover:shadow-lg group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-white bg-[#103D28] hover:bg-[#1D603A] transition-all shadow-md hover:shadow-lg group"
               >
                 <span className={isHindi ? 'font-hindi text-base' : 'font-sans text-base font-bold'}>
                   {isHindi ? 'हमारे उत्पाद एवं श्रेणियाँ देखें' : 'Explore Products & Catalog'}
                 </span>
                 <ArrowRight className="w-4 h-4 text-[#B5D957] group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Magnetic>
+
+            <Magnetic strength={0.25}>
+              <Link
+                to="/visit"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-bold text-[#103D28] bg-white border border-[#103D28]/20 hover:border-[#83B83D] hover:bg-[#103D28]/5 transition-all shadow-sm hover:shadow-md group"
+              >
+                <span className={isHindi ? 'font-hindi text-base font-bold' : 'font-sans text-base font-semibold'}>
+                  {isHindi ? 'हमारी दुकान पर पधारें' : 'Visit Our Agricultural Shop'}
+                </span>
+                <ArrowRight className="w-4 h-4 text-[#83B83D] group-hover:translate-x-1 transition-transform" />
               </Link>
             </Magnetic>
           </div>

@@ -161,7 +161,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/fertilizer-shop-rasra" className="text-[#E8B94F] hover:text-[#B5D957] transition-colors block py-0.5">
                   <span className={isHindi ? 'font-hindi font-semibold text-xs' : 'font-sans font-semibold text-xs'}>
-                    {isHindi ? 'रसड़ा-कुरेम कृषि केंद्र' : 'Rasra & Kurem Local Hub'}
+                    {isHindi ? 'रसड़ा-कुरेम कृषि केंद्र' : 'Fertilizer Shop in Rasra'}
                   </span>
                 </Link>
               </li>

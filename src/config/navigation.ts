@@ -13,6 +13,6 @@ export const NAV_ITEMS: NavItem[] = [
   { id: 'products', path: '/products', labelEn: 'Products', labelHi: 'उत्पाद' },
   { id: 'agriculture', path: '/agriculture', labelEn: 'Agriculture', labelHi: 'कृषि जानकारी' },
   { id: 'why-choose-us', path: '/why-choose-us', labelEn: 'Why Choose Us', labelHi: 'हमें क्यों चुनें' },
-  { id: 'visit', path: '/visit', labelEn: 'Visit Us', labelHi: 'हमारी दुकान' },
+  { id: 'visit', path: '/visit', labelEn: 'Visit Store', labelHi: 'हमारी दुकान' },
   { id: 'contact', path: '/contact', labelEn: 'Contact', labelHi: 'संपर्क' },
 ];

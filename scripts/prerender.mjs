@@ -508,4 +508,19 @@ const notFoundHtml = template
 fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf-8');
 console.log('✅ Created dist/404.html for static host client fallback.');
 
+// Ensure static SEO assets are explicitly present in dist/
+const sitemapSrc = path.resolve('public/sitemap.xml');
+const sitemapDest = path.join(distDir, 'sitemap.xml');
+if (fs.existsSync(sitemapSrc)) {
+  fs.copyFileSync(sitemapSrc, sitemapDest);
+  console.log('✅ Ensured dist/sitemap.xml is synchronized from public/sitemap.xml.');
+}
+
+const robotsSrc = path.resolve('public/robots.txt');
+const robotsDest = path.join(distDir, 'robots.txt');
+if (fs.existsSync(robotsSrc)) {
+  fs.copyFileSync(robotsSrc, robotsDest);
+  console.log('✅ Ensured dist/robots.txt is synchronized from public/robots.txt.');
+}
+
 console.log('🎉 Static prerendering completed successfully for all 8 canonical routes!\n');

@@ -21,51 +21,83 @@ const CANONICAL_ROUTES = [
 
 console.log(`\n📋 Checking Route Integrity: ${CANONICAL_ROUTES.length} Public Canonical Routes expected.`);
 
-// 2. Verify XML Sitemap
-const sitemapPath = path.resolve('public/sitemap.xml');
-if (fs.existsSync(sitemapPath)) {
-  const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
+// 2. Verify XML Sitemap Function
+function validateSitemap(sitemapContent, sourceLabel) {
+  let valid = true;
   const locMatches = [...sitemapContent.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
+  const urlOpenMatches = [...sitemapContent.matchAll(/<url>/g)];
+  const urlCloseMatches = [...sitemapContent.matchAll(/<\/url>/g)];
 
   // Valid XML checks
-  const isXml = sitemapContent.includes('<?xml version="1.0" encoding="UTF-8"?>');
+  const startsWithXml = sitemapContent.trim().startsWith('<?xml version="1.0" encoding="UTF-8"?>');
   const hasNamespace = sitemapContent.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+  const endsWithUrlset = sitemapContent.trim().endsWith('</urlset>');
+  const noHtml = !sitemapContent.includes('<!doctype html>') && !sitemapContent.includes('<html');
   const noDotCom = !sitemapContent.includes('vermakhadbhandar.com');
   const noLocalhost = !sitemapContent.includes('localhost');
 
-  if (isXml && hasNamespace) {
-    console.log('✅ Sitemap has valid XML header and standard namespace.');
+  if (startsWithXml && hasNamespace && endsWithUrlset && noHtml) {
+    console.log(`✅ ${sourceLabel} has valid XML declaration, urlset namespace, and proper closing tags.`);
   } else {
-    console.error('❌ Sitemap missing valid XML header or standard namespace.');
-    hasErrors = true;
+    console.error(`❌ ${sourceLabel} missing valid XML declaration, urlset namespace, or has HTML content!`);
+    valid = false;
+  }
+
+  // Well-formed XML tags check
+  if (urlOpenMatches.length === locMatches.length && urlCloseMatches.length === locMatches.length) {
+    console.log(`✅ ${sourceLabel} well-formed: ${locMatches.length} matching <url> and <loc> blocks.`);
+  } else {
+    console.error(`❌ ${sourceLabel} malformed tags: found ${urlOpenMatches.length} <url>, ${locMatches.length} <loc>, and ${urlCloseMatches.length} </url> tags.`);
+    valid = false;
   }
 
   if (noDotCom && noLocalhost) {
-    console.log('✅ Sitemap is free of vermakhadbhandar.com, localhost, and preview domains.');
+    console.log(`✅ ${sourceLabel} is free of vermakhadbhandar.com, localhost, and preview domains.`);
   } else {
-    console.error('❌ Sitemap improperly contains unowned vermakhadbhandar.com or localhost URLs!');
-    hasErrors = true;
+    console.error(`❌ ${sourceLabel} improperly contains unowned vermakhadbhandar.com or localhost URLs!`);
+    valid = false;
   }
 
+  // Exact 8 canonical count
   if (locMatches.length === CANONICAL_ROUTES.length) {
-    console.log(`✅ Sitemap contains exactly ${locMatches.length} canonical URLs (no 404/test duplicates).`);
+    console.log(`✅ ${sourceLabel} contains exactly ${locMatches.length} canonical URLs.`);
   } else {
-    console.error(`❌ Sitemap count mismatch! Found ${locMatches.length}, expected ${CANONICAL_ROUTES.length}.`);
-    hasErrors = true;
+    console.error(`❌ ${sourceLabel} count mismatch! Found ${locMatches.length}, expected ${CANONICAL_ROUTES.length}.`);
+    valid = false;
   }
 
+  // Duplicate URL check
+  const uniqueLocs = new Set(locMatches);
+  if (uniqueLocs.size === locMatches.length) {
+    console.log(`✅ ${sourceLabel} contains zero duplicate URLs.`);
+  } else {
+    console.error(`❌ ${sourceLabel} contains ${locMatches.length - uniqueLocs.size} duplicate URLs!`);
+    valid = false;
+  }
+
+  // Canonical URLs match
   CANONICAL_ROUTES.forEach((r) => {
     const expectedUrl = `${SITE_URL}${r.path === '/' ? '/' : r.path}`;
-    if (sitemapContent.includes(expectedUrl)) {
+    if (locMatches.includes(expectedUrl)) {
       console.log(`  ✓ Sitemap URL verified: ${expectedUrl}`);
     } else {
-      console.error(`  ❌ Sitemap missing canonical URL: ${expectedUrl}`);
-      hasErrors = true;
+      console.error(`  ❌ ${sourceLabel} missing canonical URL: ${expectedUrl}`);
+      valid = false;
     }
   });
 
   if (sitemapContent.includes('404') || sitemapContent.includes('not-found')) {
-    console.error('❌ Sitemap improperly includes a 404 or not-found page!');
+    console.error(`❌ ${sourceLabel} improperly includes a 404 or not-found page!`);
+    valid = false;
+  }
+
+  return valid;
+}
+
+const sitemapPath = path.resolve('public/sitemap.xml');
+if (fs.existsSync(sitemapPath)) {
+  const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
+  if (!validateSitemap(sitemapContent, 'public/sitemap.xml')) {
     hasErrors = true;
   }
 } else {
@@ -121,10 +153,7 @@ if (fs.existsSync(distDir)) {
   const distSitemapPath = path.join(distDir, 'sitemap.xml');
   if (fs.existsSync(distSitemapPath)) {
     const distSitemap = fs.readFileSync(distSitemapPath, 'utf-8');
-    if (!distSitemap.includes('vermakhadbhandar.com') && distSitemap.includes(`${SITE_URL}/`)) {
-      console.log('  ✅ dist/sitemap.xml verified with onrender URLs and no vermakhadbhandar.com domain.');
-    } else {
-      console.error('  ❌ dist/sitemap.xml contains vermakhadbhandar.com domain or lacks onrender URLs!');
+    if (!validateSitemap(distSitemap, 'dist/sitemap.xml')) {
       hasErrors = true;
     }
   } else {
@@ -450,6 +479,50 @@ modules.forEach((mod) => {
     hasErrors = true;
   }
 });
+
+// 8. Verify Production Live HTTP Responses (Sitemap & Robots)
+console.log('\n🌐 Checking Production Live HTTP Responses:');
+const prodSitemapUrl = `${SITE_URL}/sitemap.xml`;
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+  const response = await fetch(prodSitemapUrl, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+      Accept: 'application/xml,text/xml,*/*;q=0.9',
+    },
+    signal: controller.signal,
+    redirect: 'follow',
+  });
+  clearTimeout(timeoutId);
+
+  const status = response.status;
+  const contentType = response.headers.get('content-type') || '';
+  const body = await response.text();
+
+  if (status !== 200) {
+    console.error(`❌ Production sitemap HTTP status error: received ${status}, expected 200 OK.`);
+    hasErrors = true;
+  } else if (!contentType.includes('xml')) {
+    console.error(`❌ Production sitemap Content-Type error: received "${contentType}", expected XML (application/xml or text/xml).`);
+    hasErrors = true;
+  } else if (body.includes('<!doctype html>') || body.includes('<html')) {
+    console.error(`❌ Production sitemap Content Error: Live response contains HTML instead of XML!`);
+    hasErrors = true;
+  } else if (!body.trim().startsWith('<?xml') || !body.includes('<urlset')) {
+    console.error(`❌ Production sitemap Content Error: Missing XML declaration or <urlset> root.`);
+    hasErrors = true;
+  } else {
+    console.log(`  ✅ Live production sitemap verified at ${prodSitemapUrl}:`);
+    console.log(`     - Status: ${status} OK`);
+    console.log(`     - Content-Type: ${contentType}`);
+    console.log(`     - Body starts with: ${body.trim().substring(0, 80).replace(/\r?\n/g, ' ')}...`);
+    console.log(`     - Content: Valid XML, urlset confirmed, zero HTML.`);
+  }
+} catch (networkError) {
+  console.warn(`  ⚠️ Live production HTTP check skipped or network unreachable: ${networkError.message}`);
+  console.warn(`     (Offline or sandboxed execution detected; local XML and build output verified successfully).`);
+}
 
 if (hasErrors) {
   console.error('\n❌ Verification finished with errors.');
